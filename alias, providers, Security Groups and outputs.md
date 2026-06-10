@@ -74,5 +74,5 @@ resource "aws_instance" "southinstance" {
   }
      ami           = "ami-0341d95f75f311023"   --> ita change
   instance_type = "t3.micro"
-  key_name      = "swarm"
+  key_name      = "mini"
 }
