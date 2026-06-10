@@ -21,3 +21,28 @@ output.tf
 output "myOutput" {
   value = [aws_instance.myinstance[0].public_ip, aws_instance.myinstance[1].private_ip]
 }
+
+
+---> How to create security group and attach to our server 
+security.tf
+resource "aws_security_group" "mysg" {
+  name        = "Terraform-SG"
+  description = "This is created by terraform"
+
+  ingress {
+    protocol = "tcp"
+    from_port =22
+    to_port =22
+    }
+      ingress {
+    protocol = "tcp"
+    from_port =80
+    to_port =80
+    }
+    egress {
+  protocol    = "-1"
+  from_port   = 0
+  to_port     = 0
+  cidr_blocks = ["0.0.0.0/0"]
+}
+    
