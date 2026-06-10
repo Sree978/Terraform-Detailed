@@ -99,7 +99,7 @@ In real time will have variable.tf
 ///  Only numbers : numbers
 aplphabets & numbers : string 
 true or false : boolean   ////
-
+variable.tf
 variable "iname" {
   description = "this is my instance name"
   type        = string
