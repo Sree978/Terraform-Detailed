@@ -64,6 +64,69 @@ If make changes in main.tf its communicate with statefile  7 compare
 ( If its already same it wont create if its require changes it create )
 
  
+ Drift detection 
+
+ if we make changes manuvaly and will run terraform plan will notice modified changes its called Drift detection
+
+terraform destroy --auto-approve   ( w/o permission )
+Terraform destroy 
+ 
+-------------> Variables  <------------
+
+
+provider .tf   - same ad previous 
+
+main.tf 
+resource "aws_instance" "myserver" {
+  tags = {
+    Name = var.iname
+  }
+
+  ami           = var.ami_id
+  instance_type = var.itype
+  count         = var.icount
+
+  root_block_device {
+    volume_size = var.ivolume
+  }
+}
+
+variable  "
+
+
+In real time will have variable.tf    
+
+///  Only numbers : numbers
+aplphabets & numbers : string 
+true or false : boolean   ////
+
+variable "iname" {
+  description = "this is my instance name"
+  type        = string
+  default     = "Swiggy-Instance"
+}
+
+variable "ami_id" {
+  type    = string
+  default = "ami-0341d95f75f311023"
+}
+
+variable "itype" {
+  type    = string
+  default = "t3.micro"
+}
+
+variable "icount" {
+  type    = number
+  default = 3
+}
+
+variable "ivolume" {
+  type    = number
+  default = 10
+}
+
+
  
  
  
