@@ -88,3 +88,6 @@ provider "aws" {
   region = "ap-south-1"
   alias  = Mumbai
 }
+
+Terraform plan 
+terraform apply 
