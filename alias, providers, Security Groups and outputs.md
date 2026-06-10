@@ -49,5 +49,30 @@ resource "aws_security_group" "mysg" {
 
     ---> Alias & Provider  <---
 
-    Two server will be create in two different (Norh or virginia & mumbai)
-    
+    Two server will be create in two different Regions (Norh or virginia & mumbai)
+
+    Main.tf
+    resource "aws_instance" "nvinstance" {
+
+  tags = {
+    Name        = "NV-Instance"
+    Environment = "Dev"
+    Client      = "FLM"
+  }
+
+  ami           = "ami-0341d95f75f311023"
+  instance_type = "t3.micro"
+  key_name      = "swarm"
+}
+
+resource "aws_instance" "southinstance" {
+
+  tags = {
+    Name        = "Mumbai-Instance"
+    Environment = "Dev"
+    Client      = "FLM"
+  }
+     ami           = "ami-0341d95f75f311023"   --> ita change
+  instance_type = "t3.micro"
+  key_name      = "swarm"
+}
