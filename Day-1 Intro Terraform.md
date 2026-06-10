@@ -127,6 +127,24 @@ variable "ivolume" {
 }
 
 
+Terraform fmt -- >
+terraform plan
+terraform apply 
+
+
+
+terraform state list --> to get which servers created over terraform 
+
+vim output.tf
+
+
+output "myoutput" {
+  value = [ws_instance.myserver[0].id,aws_instance.myserver[1].id,aws_instance.myserver[2].id]
+}
+Terraform apply 
+
+terraform destroy  mention id ( which you want to delete ) 
+
  
  
  
