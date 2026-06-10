@@ -76,3 +76,15 @@ resource "aws_instance" "southinstance" {
   instance_type = "t3.micro"
   key_name      = "mini"
 }
+
+
+Providers.tf
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+provider "aws" {
+  region = "ap-south-1"
+  alias  = Mumbai
+}
