@@ -66,7 +66,7 @@ resource "aws_security_group" "mysg" {
 }
 
 resource "aws_instance" "southinstance" {
-
+ provider = aws.mumbai
   tags = {
     Name        = "Mumbai-Instance"
     Environment = "Dev"
