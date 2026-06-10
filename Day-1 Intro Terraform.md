@@ -146,7 +146,7 @@ Terraform apply
 terraform destroy  mention id ( which you want to delete ) 
 
  
- 
+ terraform destroy --target=aws_instance.myserver[1]     ---> to delete particular 
  
  
 
