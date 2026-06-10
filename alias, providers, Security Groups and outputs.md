@@ -45,4 +45,9 @@ resource "aws_security_group" "mysg" {
   to_port     = 0
   cidr_blocks = ["0.0.0.0/0"]
 }
+
+
+    ---> Alias & Provider  <---
+
+    Two server will be create in two different (Norh or virginia & mumbai)
     
