@@ -31,4 +31,4 @@ resource "aws_instance" "myinstance" {
 
 Terraform init
 terraform plan    --> we have to add IAM role for our ec2 server 
-terraform apply 
+terraform apply --auto-approve
