@@ -66,4 +66,10 @@ Terraform workspace select sree --> to go particular work psace
 post that delete 
 Terraform workspace delete sree
 
+-----> Refresh <---
+
+----> To get servers which is in live 
+
+Terraform apply --refresh-only 
+
 
