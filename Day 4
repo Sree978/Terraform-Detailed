@@ -2,3 +2,29 @@ Import
 
 
 we can edit ec2  instance, volumes sg  etc once import resources over terraform which we done manuvally over aws 
+
+provider.tf
+
+provider "aws" {
+region = "us-east-1"
+
+}
+
+vim main.tf
+resource "aws_instance" "Manval" {
+  ami           = "ami-0521cb2d60cfbb1a6"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "Manval"
+  }
+}
+terraform init
+terraform import aws_instance.Manval i-09f4c9f13cc653ec0     --> label and instance id  of manvally creted 
+ll
+will notice statefile
+
+id will make any changes inmain.tf its reflecting in manval server also 
+
+
+
