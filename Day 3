@@ -19,7 +19,7 @@ provider "aws" {
 Main.tf 
 resource "aws_instance" "myinstance" {
     tags = {
-        name = "myserver"
+        name = "myserver"              /   Name = ${terraform.workspace}-server   ---> to get dafault workspace user name as a server name 
     }
     ami = "ami-0521cb2d60cfbb1a6"
     instanc_type = "t3.micro"
@@ -33,5 +33,14 @@ Terraform init
 terraform plan    --> we have to add IAM role for our ec2 server 
 terraform apply --auto-approve
 
+  ------> workspace <------
+
+In Terraform, a workspace allows you to manage multiple environments (such as dev, test, and prod) using the same Terraform configuration.
+
 Terraform workspace show  --> will default workspace  --> 
 Terraform workspace list  --> to get list of workspce
+
+Terraform workspace new sree   --> 
+Terraform workspace show   --> to check present workspace
+ terraform apply --auto-approve --> will notice created one more server 
+
