@@ -1,0 +1,4 @@
+Import 
+
+
+we can edit ec2  instance, volumes sg  etc once import resources over terraform which we done manuvally over aws 
