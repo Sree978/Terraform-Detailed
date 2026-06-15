@@ -44,3 +44,22 @@ Terraform workspace new sree   -->
 Terraform workspace show   --> to check present workspace
  terraform apply --auto-approve --> will notice created one more server 
 
+Local.tf 
+locals {
+  instance_type = {
+    dev = "t3.micro"
+    test = "c7i-flex.large"
+    prod = "m7i-flex.large"
+  }
+}
+
+main.tf 
+
+will change only 
+
+ instance_type = locals.instance_type[terraform workspace]
+
+Based on this instance type will craete  : instance type will pick up from locals.tf  its proceed accordings 
+in dev workspace its create t3 micro , if its in test workapsce its create c7i
+
+
