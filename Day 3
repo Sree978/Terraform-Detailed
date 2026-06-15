@@ -62,4 +62,8 @@ will change only
 Based on this instance type will craete  : instance type will pick up from locals.tf  its proceed accordings 
 in dev workspace its create t3 micro , if its in test workapsce its create c7i
 
+Terraform workspace select sree --> to go particular work psace 
+post that delete 
+Terraform workspace delete sree
+
 
