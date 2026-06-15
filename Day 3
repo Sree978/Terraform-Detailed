@@ -1,3 +1,30 @@
 To connect server over VS code
 Install extenstion > Remote -ssh
+Open a remote window > connect to host + enter and open  config file  (  c/users/username/.ssh/config)
 
+Host terraform-server
+  HostName 107.22.155.244
+  User ec2-user
+  IdentityFile C:\Users\Lokeswari\Downloads\awshome.pem
+
+Open a remote window > connect to ssh > terraform server ( which we created above)
+open a terminal and give permission to root user 
+sudo chmod 777 /root
+
+Provider.tf 
+provider "aws" {
+    region = "us-east-1"
+}
+
+Main.tf 
+resource "aws_instance" "myinstance" {
+    tags = {
+        name = "myserver"
+    }
+    ami = "ami-0521cb2d60cfbb1a6"
+    instanc_type = "t3.micro"
+    key_name = "awshome"
+    root_block_device {
+        volume_size = 10
+    }
+}
