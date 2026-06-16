@@ -71,13 +71,25 @@ will notice first creating server post that destroy server
 To restrict to dont want create server volumes and and sg  anyone 
 
 will make changes in lifecycle 
-
+Lifecycle {
   ignore_changes = [tags]
-
+}
 wll use multiple also 
-
+Lifecycle {
 ignore_changes = [tags, instance_type,ami]
+}
 
+---> if someone dont want to delete  will use it <----
+
+ lifecycle {
+    prevent_destroy = true
+  }
+
+We have three benfits over lifecysle 
+
+  1 create before destroy
+  2 ignore changes
+  3 prevent destroy
 
 
 
