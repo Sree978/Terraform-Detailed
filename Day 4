@@ -74,6 +74,9 @@ will make changes in lifecycle
 
   ignore_changes = [tags]
 
+wll use multiple also 
+
+ignore_changes = [tags, instance_type,ami]
 
 
 
