@@ -27,4 +27,50 @@ will notice statefile
 id will make any changes inmain.tf its reflecting in manval server also 
 
 
+--------------> Taint <---------------   advance version is   --->  Replace <----
+
+if we created server over terraform however few servers are not working this situation we have to recreate server 
+will apply taint for same server for create in the place of which is not working with same configeration 
+
+terraform taint aws_instance.Manval   ( Server id)
+Terraform apply 
+
+so will notice destroting old server ans creating a new server along with same configeration
+
+terraform apply --auto-approve -replace="aws_instance.Manval"
+
+
+here we may face downtime while creating new one and deleting old one
+
+
+------> Terraform Lifecycle <-----------
+
+Main.tf we have to add lifecycle
+
+resource "aws_instance" "Manval" {
+  ami           = "ami-0521cb2d60cfbb1a6"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "terraform"
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+
+
+terraform apply --auto-approve -replace="aws_instance.Manval"
+
+will notice first creating server post that destroy server 
+
+
+
+
+
+
+
+
+
 
