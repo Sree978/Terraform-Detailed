@@ -66,6 +66,14 @@ terraform apply --auto-approve -replace="aws_instance.Manval"
 will notice first creating server post that destroy server 
 
 
+----> 
+
+To restrict to dont want create server volumes and and sg  anyone 
+
+will make changes in lifecycle 
+
+  ignore_changes = [tags]
+
 
 
 
