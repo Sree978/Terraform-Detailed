@@ -1,0 +1,30 @@
+Provisioners
+Terraform Provisioners (local-exec, remote-exec, file) are used in real projects, but only for specific situations. 
+Most companies try to minimize their usage because provisioners are considered a "last resort" by Terraform.
+
+3 types 
+1. local-exec : Runs commands on the machine where Terraform is executed
+2. remote-exec : Runs commands inside the created VM/EC2 instance.
+3. file : Copies files from local machine to remote server.
+
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "myinstance" {
+  ami           = "ami-07860a2d7eb515d9a"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "MyServer"
+  }
+
+  provisioner "local-exec" {
+    command = "echo 'Instance created with an ID: ${aws_instance.myinstance.id}' >> server-id.txt"
+  }
+}
+
+Terraform init
+terraform plam
+terraform apply --auto-approve
