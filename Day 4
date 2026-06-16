@@ -93,7 +93,7 @@ We have three benfits over lifecysle
 
 
 Code for security Group in terraform '
-
+vim security.tf
 resource "aws_security_group" "mysg" {
   name = "Terraform-sg"
   description = "this will be created by terraform"
@@ -126,6 +126,38 @@ Egress {
   }
 }
 
+
+
+----------> Dynamic blocks in terrafoerm <----
+
+will use the reduce the repetative code in terraform 
+
+
+resource "aws_security_group" "mysg" {
+  name = "Terraform-sg"
+  description = "this will be created by terraform"
+
+dynamic "ingress" {
+  for_each = var.ports
+  content {
+    from_port   = ingress.value
+    to_port     = ingress.value
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+egress {
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
+}
+
+variable "ports" {
+  type    = list(any)
+  default = [22, 80, 443, 8080, 9000, 50000]
+}
 
 
 
