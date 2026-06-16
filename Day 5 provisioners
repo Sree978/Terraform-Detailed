@@ -28,3 +28,72 @@ resource "aws_instance" "myinstance" {
 Terraform init
 terraform plam
 terraform apply --auto-approve
+
+
+To install application after creating server also wil use 
+
+ssh-keygen 
+
+provider "aws" {
+  region = "us-east-1"
+}
+resource "aws_key_pair" "mykey" {
+  key_name   = "flm"
+  public_key = file("/root/.ssh/id_rsa.pub")
+}
+
+resource "aws_instance" "myinstance" {
+  ami           = "ami-0521cb2d60cfbb1a6"
+  instance_type = "t3.micro"
+key_name = aws_key_pair.mykey.key_name
+
+vpc_security_group = [aws_security_group.mysg.id]
+
+
+  tags = {
+    Name = "MyServer"
+  }
+
+  provisioner "remote-exec" {
+
+    connection {
+      type        = "ssh"
+      user        = "ec2-user"
+      host        = self.public_ip
+      private_key = file("/root/.ssh/id_rsa")
+    }
+
+    inline = [
+      "echo 'This command is executing on Remote Server'",
+      "sudo yum install httpd -y",
+      "sudo systemctl start httpd",
+      "sudo systemctl enable httpd",
+      "sudo yum install git -y"
+    ]
+  }
+}
+
+Vim security.tf
+resource "aws_security_group" "mysg" {
+  name        = "new-tf-sg"
+  description = "this is created by terraform"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
+
+
+
