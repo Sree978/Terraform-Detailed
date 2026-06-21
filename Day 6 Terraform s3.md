@@ -69,6 +69,53 @@ will notice whenever we update infrastructure will notice our state files and pr
 will get jar file in this path 
 cd /var/lib/jenkins/workspace/application/target/
 
+pipeline {
+    agent any
+    tools {
+        maven "mymaven"
+    }
+    
+    stages {
+        stage('code') {
+            steps {
+                git 'https://github.com/Sree978/one.git'
+            }
+        }
+        stage ( 'build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage ('artifact') {
+            steps {
+                s3Upload(
+                    profileName: 's3',
+                    entries: [[
+                        bucket: 'sree.terraform.tinku.bucket.dev20260621',
+                        sourceFile: 'target/myweb-8.7.1.war',
+                        excludedFile: '',
+                        storageClass: 'STANDARD',
+                        selectedRegion: 'us-east-1',
+                        noUploadOnFailure: false,
+                        uploadFromSlave: false,
+                        managedArtifacts: false,
+                        useServerSideEncryption: false,
+                        flatten: false,
+                        gzipFiles: false,
+                        keepForever: false,
+                        showDirectlyInBrowser: false
+                    ]],
+                    pluginFailureResultConstraint: 'FAILURE',
+                    dontWaitForConcurrentBuildCompletion: false,
+                    dontSetBuildResultOnFailure: false,
+                    consoleLogLevel: 'INFO'
+                )
+            }
+        }
+    }
+}
+
+
 
  
  
