@@ -22,6 +22,9 @@ variable "bucket_name" {
 Terraform init
 Terraform apply --auto-approve
 
+To store statefile into s3 
+
+
 vim bacekend.tf
 terraform {
   backend "s3" {
@@ -47,6 +50,12 @@ resource "aws_instance" "myserver" {
 
 Terraform init 
 terraform apply -auto-approve
+
+will notice whenever we update infrastructure will notice our state files and previous statefile also 
+ will get s3 and ec2 storage also 
+ 
+
+
 
 
 
