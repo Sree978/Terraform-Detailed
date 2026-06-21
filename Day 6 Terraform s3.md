@@ -61,7 +61,16 @@ will notice whenever we update infrastructure will notice our state files and pr
  In jenkins install plugins
 
  stage pipleline view and s3 publisher
- Instta manage jekins > system > s3
+ Instta manage jekins > system > Amazon S3 profiles> for her access and and secret get it from IAM user in AWS which and s3 full access + save 
+
+ Jenkins agains create artifactory 
+ 
+
+will get jar file in this path 
+cd /var/lib/jenkins/workspace/application/target/
+
+
+ 
  
 
  
