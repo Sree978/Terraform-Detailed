@@ -56,8 +56,12 @@ will notice whenever we update infrastructure will notice our state files and pr
 
  ---> to store war /jar files in s3 
 
+ Install jenkins
  
  
+
+
+
  
 
 
