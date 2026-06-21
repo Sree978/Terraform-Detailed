@@ -53,6 +53,11 @@ terraform apply -auto-approve
 
 will notice whenever we update infrastructure will notice our state files and previous statefile also 
  will get s3 and ec2 storage also 
+
+ ---> to store war /jar files in s3 
+
+ 
+ 
  
 
 
