@@ -36,7 +36,32 @@ use_lockfile = true
 
 }
 
-}
+} 
 
 
+  ------>  Terraform module   <-----
+  
+<img width="731" height="592" alt="image" src="https://github.com/user-attachments/assets/ba0ae165-f9ab-4f9e-b408-138428719dc9" />
+
+ will notice 4 environments here
+
+ for every enironment will craete folder and realted statefile 
+
+ before applying terraform apply  we have to craete workspace 
+ 
+terraform-project/
+├── dev/
+│   ├── backend.tf
+│   ├── main.tf
+│   └── terraform.tfvars
+├── stage/
+│   ├── backend.tf
+│   ├── main.tf
+│   └── terraform.tfvars
+└── prod/
+    ├── backend.tf
+    ├── main.tf
+    └── terraform.tfvars
+
+    
 
