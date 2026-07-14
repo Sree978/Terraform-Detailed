@@ -22,3 +22,8 @@ will use it for reuse code and maintain infrstructure
 ├── stage
 └── modules
     └── main.tf
+
+    will use dev enviro code for prod and stage also 
+
+    however out input over modules main.tf 
+    
