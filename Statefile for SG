@@ -1,0 +1,52 @@
+
+Provider.tf
+ instance.tf
+resource "aws_instance" "web" {
+  ami           = "ami-06067086cf86c58e6"
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "MyServer"
+  }
+
+  availability_zone      = "us-east-1a"
+  vpc_security_group_ids = [aws_security_group.mysg.id]
+  key_name               = "tharukp"
+
+  root_block_device {
+    volume_size = 10
+  }
+}                               resource_type.resource_name.attribute
+
+# Example:
+aws_security_group.mysg.id
+
+
+
+Security.tf 
+
+resource "aws_security_group" "mysg" {
+  name        = "Terraform-SG"
+  description = "this is created by terraform"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
