@@ -1,1 +1,7 @@
+VPC is large network divided like small network subnet 1-a, Subnet 1-b, subnet 1-c and place each network in different   data centers for getting high availability of application 
+we have two types of subnets public and private 
+public subnet - will hold LB 
+private subnet - will store our actuval application  , we can't access servers over internet , will use NAT to access resources which is in private subnet , 
+while creating VPC we haev to IGW ( internet gateway )
+
 
