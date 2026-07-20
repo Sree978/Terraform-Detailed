@@ -4,4 +4,8 @@ public subnet - will hold LB
 private subnet - will store our actuval application  , we can't access servers over internet , will use NAT to access resources which is in private subnet , 
 while creating VPC we haev to IGW ( internet gateway )
 
+CIDR - Classless inter domain range 
+
+Cretae VPC and two subnets & internet gate way and attach to vpc , create route table its default 
+
 
