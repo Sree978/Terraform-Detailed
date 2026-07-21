@@ -9,3 +9,10 @@ CIDR - Classless inter domain range
 Cretae VPC and two subnets & internet gate way and attach to vpc , create route table its default 
 
 
+VPC 
+
+<img width="1028" height="599" alt="image" src="https://github.com/user-attachments/assets/30bd6b25-396f-43bb-9e0c-e18208045a3a" />
+
+
+
+
